@@ -2,14 +2,14 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-  alias(libs.plugins.kotlinMultiplatform)
   alias(libs.plugins.androidMultiplatformLibrary)
-  alias(libs.plugins.composeMultiplatform)
   alias(libs.plugins.composeCompiler)
+  alias(libs.plugins.composeMultiplatform)
   alias(libs.plugins.koinCompiler)
-  alias(libs.plugins.ktorfit)
+  alias(libs.plugins.kotlinMultiplatform)
   alias(libs.plugins.kotlinSerialization)
   alias(libs.plugins.ksp)
+  alias(libs.plugins.ktorfit)
 }
 
 kotlin {
@@ -68,18 +68,17 @@ kotlin {
       implementation(libs.compose.runtime)
       implementation(libs.compose.ui)
       implementation(libs.compose.uiToolingPreview)
-      api(libs.koin.annotations)
+      implementation(libs.koin.annotations)
       implementation(libs.koin.core)
       implementation(libs.koin.compose)
       implementation(libs.koin.compose.viewmodel)
       implementation(libs.koin.compose.viewmodel.navigation)
+      implementation(libs.kotlin.automapper.annotation)
       implementation(libs.kotlinx.coroutines.core)
-      implementation(libs.ktor.client.content.negotiation)
-      implementation(libs.ktor.client.core)
-      implementation(libs.ktor.client.logging)
-      implementation(libs.ktor.client.serialization)
-      implementation(libs.ktor.serialization.json)
       implementation(libs.ktorfit)
+      implementation(libs.serialization.json)
+      implementation(libs.content.negotiation)
+      implementation(libs.kotlinx.json)
     }
 
     androidMain.dependencies {
@@ -87,7 +86,6 @@ kotlin {
       implementation(libs.compose.uiTooling)
       implementation(libs.koin.android)
       implementation(libs.kotlinx.coroutines.android)
-      implementation(libs.ktor.client.okhttp)
     }
 
     jsMain.dependencies {
@@ -95,7 +93,6 @@ kotlin {
     }
 
     iosMain.dependencies {
-      implementation(libs.ktor.client.darwin)
     }
 
     commonTest.dependencies {
@@ -107,4 +104,6 @@ kotlin {
 
 dependencies {
   androidRuntimeClasspath(libs.compose.uiTooling)
+  add("kspJs", libs.kotlin.automapper.processor)
+  add("kspIosArm64", libs.kotlin.automapper.processor)
 }
