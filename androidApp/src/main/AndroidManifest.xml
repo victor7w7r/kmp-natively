@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
       <application
-        android.name=".ComposeApp"
+        android:name=".MainApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="kmp-natively"
         android:theme="@android:style/Theme.Material.NoActionBar">

@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Binance(
-	val price: String,
-	val symbol: String,
+  val price: String,
+  val symbol: String,
 ) {
-	constructor() : this("", "ERR")
+  constructor() : this("", "ERR")
 }

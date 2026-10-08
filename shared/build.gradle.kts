@@ -104,6 +104,6 @@ kotlin {
 
 dependencies {
   androidRuntimeClasspath(libs.compose.uiTooling)
-  add("kspJs", libs.kotlin.automapper.processor)
-  add("kspIosArm64", libs.kotlin.automapper.processor)
+  // add("kspJs", libs.kotlin.automapper.processor)
+  // add("kspIosArm64", libs.kotlin.automapper.processor)
 }

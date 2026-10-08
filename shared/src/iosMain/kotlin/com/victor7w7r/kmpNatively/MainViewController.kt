@@ -10,15 +10,15 @@ import platform.UIKit.UIViewController
 import platform.UIKit.setStatusBarStyle
 
 fun MinViewController(): UIViewController =
-	ComposeUIViewController {
-		App(onThemeChanged = { ThemeChanged(it) })
-	}
+  ComposeUIViewController {
+    App(onThemeChanged = { ThemeChanged(it) })
+  }
 
 @Composable
 private fun ThemeChanged(isDark: Boolean) {
-	LaunchedEffect(isDark) {
-		UIApplication.sharedApplication.setStatusBarStyle(
-			if (isDark) UIStatusBarStyleDarkContent else UIStatusBarStyleLightContent,
-		)
-	}
+  LaunchedEffect(isDark) {
+    UIApplication.sharedApplication.setStatusBarStyle(
+      if (isDark) UIStatusBarStyleDarkContent else UIStatusBarStyleLightContent,
+    )
+  }
 }

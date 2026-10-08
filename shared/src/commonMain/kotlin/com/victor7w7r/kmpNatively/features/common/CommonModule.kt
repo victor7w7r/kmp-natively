@@ -4,6 +4,7 @@ import com.victor7w7r.kmpNatively.core.constants.Constants
 import com.victor7w7r.kmpNatively.features.common.data.datasources.BinanceRemoteDataSource
 import com.victor7w7r.kmpNatively.features.common.data.datasources.createBinanceRemoteDataSource
 import de.jensklingenberg.ktorfit.Ktorfit
+import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
 import org.koin.core.annotation.ComponentScan
