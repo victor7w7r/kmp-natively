@@ -1,10 +1,12 @@
 package com.victor7w7r.kmpNatively.features.common.business.repositories
 
+import arrow.core.Either
+import arrow.core.Option
 import com.victor7w7r.kmpNatively.features.common.business.entities.Binance
-import com.victor7w7r.kmpNatively.features.common.business.entities.Bitcoin
+import kotlinx.coroutines.flow.Flow
 
-interface BinanceRepository {
-  suspend fun getBitcoin(symbol: String): Bitcoin?
+typealias BinanceResult = Option<Either<String, List<Binance>>>
 
-  suspend fun getAllBinance(symbol: String): List<Binance>
+fun interface BinanceRepository {
+  fun getAllCurrencies(): Flow<BinanceResult>
 }

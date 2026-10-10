@@ -13,6 +13,54 @@ plugins {
 }
 
 kotlin {
+  sourceSets {
+    commonMain.dependencies {
+      implementation(libs.androidx.lifecycle.runtimeCompose)
+      implementation(libs.androidx.lifecycle.viewmodelCompose)
+      implementation(libs.arrow.core)
+      implementation(libs.arrow.fx.coroutines)
+      implementation(libs.compose.components.resources)
+      implementation(libs.compose.foundation)
+      implementation(libs.compose.material3)
+      implementation(libs.compose.runtime)
+      implementation(libs.compose.ui)
+      implementation(libs.compose.uiToolingPreview)
+      implementation(libs.content.negotiation)
+      implementation(libs.koin.annotations)
+      implementation(libs.koin.compose)
+      implementation(libs.koin.compose.viewmodel)
+      implementation(libs.koin.compose.viewmodel.navigation)
+      implementation(libs.koin.core)
+      implementation(libs.kotlinx.coroutines.core)
+      implementation(libs.kotlinx.json)
+      implementation(libs.ktorfit)
+      implementation(libs.serialization.json)
+      implementation(libs.voyager.koin)
+      implementation(libs.voyager.navigator)
+      implementation(libs.voyager.screenModel)
+      implementation(libs.voyager.transitions)
+    }
+
+    androidMain.dependencies {
+      implementation(libs.compose.uiToolingPreview)
+      implementation(libs.compose.uiTooling)
+      implementation(libs.koin.android)
+      implementation(libs.kotlinx.coroutines.android)
+    }
+
+    jsMain.dependencies {
+      implementation(libs.wrappers.browser)
+    }
+
+    iosMain.dependencies {
+    }
+
+    commonTest.dependencies {
+      implementation(kotlin("test"))
+      implementation(libs.kotlinx.coroutines.test)
+    }
+  }
+
   android {
     namespace = "com.v7w7r.kmpNatively.shared"
     compileSdk =
@@ -57,53 +105,16 @@ kotlin {
       isStatic = true
     }
   }
-
-  sourceSets {
-    commonMain.dependencies {
-      implementation(libs.androidx.lifecycle.runtimeCompose)
-      implementation(libs.androidx.lifecycle.viewmodelCompose)
-      implementation(libs.compose.components.resources)
-      implementation(libs.compose.foundation)
-      implementation(libs.compose.material3)
-      implementation(libs.compose.runtime)
-      implementation(libs.compose.ui)
-      implementation(libs.compose.uiToolingPreview)
-      implementation(libs.koin.annotations)
-      implementation(libs.koin.core)
-      implementation(libs.koin.compose)
-      implementation(libs.koin.compose.viewmodel)
-      implementation(libs.koin.compose.viewmodel.navigation)
-      implementation(libs.kotlin.automapper.annotation)
-      implementation(libs.kotlinx.coroutines.core)
-      implementation(libs.ktorfit)
-      implementation(libs.serialization.json)
-      implementation(libs.content.negotiation)
-      implementation(libs.kotlinx.json)
-    }
-
-    androidMain.dependencies {
-      implementation(libs.compose.uiToolingPreview)
-      implementation(libs.compose.uiTooling)
-      implementation(libs.koin.android)
-      implementation(libs.kotlinx.coroutines.android)
-    }
-
-    jsMain.dependencies {
-      implementation(libs.wrappers.browser)
-    }
-
-    iosMain.dependencies {
-    }
-
-    commonTest.dependencies {
-      implementation(kotlin("test"))
-      implementation(libs.kotlinx.coroutines.test)
-    }
-  }
 }
 
 dependencies {
   androidRuntimeClasspath(libs.compose.uiTooling)
-  // add("kspJs", libs.kotlin.automapper.processor)
-  // add("kspIosArm64", libs.kotlin.automapper.processor)
+  with(libs.ktorfit.compiler) {
+    add("kspCommonMainMetadata", this)
+    add("kspAndroid", this)
+    add("kspJs", this)
+    add("kspWasmJs", this)
+    add("kspIosArm64", this)
+    add("kspIosSimulatorArm64", this)
+  }
 }

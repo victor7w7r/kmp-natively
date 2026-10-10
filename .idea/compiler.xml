@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="25">
+      <module name="kmp-natively.android" target="25" />
+      <module name="kmp-natively.app" target="25" />
+      <module name="kmp-natively.web" target="25" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

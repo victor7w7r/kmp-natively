@@ -1,4 +1,4 @@
-package com.victor7w7r.kmpNatively.theme
+package com.victor7w7r.kmpNatively.core.resources.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -17,7 +17,7 @@ private val LightColorScheme =
     onSecondary = OnSecondaryLight,
     secondaryContainer = SecondaryContainerLight,
     onSecondaryContainer = OnSecondaryContainerLight,
-    tertiary = TertiaryLight,
+    // tertiary = TertiaryLight,
     onTertiary = OnTertiaryLight,
     tertiaryContainer = TertiaryContainerLight,
     onTertiaryContainer = OnTertiaryContainerLight,
@@ -89,7 +89,7 @@ internal val LocalThemeIsDark = compositionLocalOf { mutableStateOf(true) }
 
 @Composable
 internal fun AppTheme(
-  onThemeChanged: @Composable (isDark: Boolean) -> Unit,
+  onThemeChange: @Composable (isDark: Boolean) -> Unit,
   content: @Composable () -> Unit,
 ) {
   val systemIsDark = isSystemInDarkTheme()
@@ -98,7 +98,7 @@ internal fun AppTheme(
     LocalThemeIsDark provides isDarkState,
   ) {
     val isDark by isDarkState
-    onThemeChanged(!isDark)
+    onThemeChange(!isDark)
     MaterialTheme(
       colorScheme = if (isDark) DarkColorScheme else LightColorScheme,
       content = { Surface(content = content) },

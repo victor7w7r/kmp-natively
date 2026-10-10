@@ -26,7 +26,7 @@ class CommonModule {
   fun ktorfitClient(client: HttpClient) =
     Ktorfit
       .Builder()
-      .baseUrl(Constants.host)
+      .baseUrl(Constants.HOST)
       .httpClient(client)
       .build()
 

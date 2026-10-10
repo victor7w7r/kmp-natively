@@ -1,11 +1,9 @@
 package com.victor7w7r.kmpNatively.features.common.business.entities
 
-import kotlinx.serialization.Serializable
+import androidx.compose.runtime.Immutable
 
-@Serializable
+@Immutable
 data class Binance(
   val price: String,
   val symbol: String,
-) {
-  constructor() : this("", "ERR")
-}
+)

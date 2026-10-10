@@ -1,4 +1,4 @@
-package com.victor7w7r.kmpNatively.theme
+package com.victor7w7r.kmpNatively.core.resources.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -12,7 +12,6 @@ internal val SecondaryLight = Color(0xFF2B6485)
 internal val OnSecondaryLight = Color(0xFFFFFFFF)
 internal val SecondaryContainerLight = Color(0xFFC7E7FF)
 internal val OnSecondaryContainerLight = Color(0xFF064C6B)
-internal val TertiaryLight = Color(0xFF356668)
 internal val OnTertiaryLight = Color(0xFFFFFFFF)
 internal val TertiaryContainerLight = Color(0xFFB9ECEE)
 internal val OnTertiaryContainerLight = Color(0xFF1A4E50)

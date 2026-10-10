@@ -11,7 +11,8 @@ import platform.UIKit.setStatusBarStyle
 
 fun MinViewController(): UIViewController =
   ComposeUIViewController {
-    App(onThemeChanged = { ThemeChanged(it) })
+    initNavigationRegistry()
+    App(onThemeChange = { ThemeChanged(it) })
   }
 
 @Composable
