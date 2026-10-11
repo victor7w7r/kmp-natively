@@ -6,11 +6,7 @@ import com.slack.circuit.runtime.screen.CircuitSaver
 import com.slack.circuit.runtime.ui.Ui
 import com.slack.circuit.serialization.CircuitSerializerRegistration
 import com.slack.circuit.serialization.SerializableCircuitSaver
-import dev.zacsweers.metro.AppScope
-import dev.zacsweers.metro.ContributesTo
-import dev.zacsweers.metro.Multibinds
-import dev.zacsweers.metro.Provides
-import dev.zacsweers.metro.SingleIn
+import dev.zacsweers.metro.*
 
 @ContributesTo(AppScope::class)
 interface CircuitModule {

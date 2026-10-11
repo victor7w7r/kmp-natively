@@ -5,23 +5,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.slack.circuit.codegen.annotations.CircuitInject
-import com.slack.circuit.runtime.CircuitUiEvent
-import com.slack.circuit.runtime.CircuitUiState
-import com.slack.circuit.runtime.presenter.Presenter
-import com.slack.circuit.runtime.screen.Screen
-import com.slack.circuit.serialization.CircuitSerializable
-import com.victor7w7r.kmpNatively.features.common.business.usecases.GetThemeUseCase
-import dev.zacsweers.metro.AppScope
-import dev.zacsweers.metro.Inject
-
-internal val Seed = Color(0xFF1D3557)
 
 internal val PrimaryLight = Color(0xFF485F84)
 internal val OnPrimaryLight = Color(0xFFFFFFFF)

@@ -8,6 +8,6 @@ fun interface SingleUseCase<T> {
   operator fun invoke(): T
 }
 
-fun interface FlowEitherUseCase<T, U> {
-  operator fun invoke(): Flow<Option<Either<T, U>>>
+fun interface FlowUseCase<T> {
+  operator fun invoke(): Flow<T>
 }

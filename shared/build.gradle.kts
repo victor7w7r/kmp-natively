@@ -79,6 +79,8 @@ kotlin {
       implementation(libs.compose.ui)
       implementation(libs.compose.uiToolingPreview)
       implementation(libs.content.negotiation)
+      implementation(libs.coil.compose)
+      implementation(libs.coil.core)
       implementation(libs.kotlinx.coroutines.core)
       implementation(libs.kotlinx.json)
       implementation(libs.ktorfit)
