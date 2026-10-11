@@ -6,11 +6,11 @@ import arrow.core.some
 import com.victor7w7r.kmpNatively.features.common.business.entities.Binance
 import com.victor7w7r.kmpNatively.features.common.business.repositories.BinanceRepository
 import com.victor7w7r.kmpNatively.features.common.data.datasources.BinanceRemoteDataSource
+import dev.zacsweers.metro.Inject
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import org.koin.core.annotation.Factory
 
-@Factory
+@Inject
 class BinanceRepositoryImpl(
   private val remoteDataSource: BinanceRemoteDataSource,
 ) : BinanceRepository {

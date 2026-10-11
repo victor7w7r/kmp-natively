@@ -6,18 +6,20 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.victor7w7r.kmpNatively.core.modules.AppGraph
+import dev.zacsweers.metro.createGraph
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
+    val app = createGraph<AppGraph>().app
     enableEdgeToEdge()
     super.onCreate(savedInstanceState)
-    initNavigationRegistry()
-    setContent { App() }
+    setContent { app() }
   }
 }
 
 @Preview
 @Composable
 private fun AppAndroidPreview() {
-  App()
+  createGraph<AppGraph>().app()
 }

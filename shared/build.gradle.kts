@@ -1,3 +1,4 @@
+import dev.zacsweers.metro.gradle.ExperimentalMetroGradleApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -5,62 +6,17 @@ plugins {
   alias(libs.plugins.androidMultiplatformLibrary)
   alias(libs.plugins.composeCompiler)
   alias(libs.plugins.composeMultiplatform)
-  alias(libs.plugins.koinCompiler)
   alias(libs.plugins.kotlinMultiplatform)
   alias(libs.plugins.kotlinSerialization)
   alias(libs.plugins.ksp)
   alias(libs.plugins.ktorfit)
+  alias(libs.plugins.metro)
 }
 
+@OptIn(ExperimentalMetroGradleApi::class)
+metro { enableCircuitCodegen.set(true) }
+
 kotlin {
-  sourceSets {
-    commonMain.dependencies {
-      implementation(libs.androidx.lifecycle.runtimeCompose)
-      implementation(libs.androidx.lifecycle.viewmodelCompose)
-      implementation(libs.arrow.core)
-      implementation(libs.arrow.fx.coroutines)
-      implementation(libs.compose.components.resources)
-      implementation(libs.compose.foundation)
-      implementation(libs.compose.material3)
-      implementation(libs.compose.runtime)
-      implementation(libs.compose.ui)
-      implementation(libs.compose.uiToolingPreview)
-      implementation(libs.content.negotiation)
-      implementation(libs.koin.annotations)
-      implementation(libs.koin.compose)
-      implementation(libs.koin.compose.viewmodel)
-      implementation(libs.koin.compose.viewmodel.navigation)
-      implementation(libs.koin.core)
-      implementation(libs.kotlinx.coroutines.core)
-      implementation(libs.kotlinx.json)
-      implementation(libs.ktorfit)
-      implementation(libs.serialization.json)
-      implementation(libs.voyager.koin)
-      implementation(libs.voyager.navigator)
-      implementation(libs.voyager.screenModel)
-      implementation(libs.voyager.transitions)
-    }
-
-    androidMain.dependencies {
-      implementation(libs.compose.uiToolingPreview)
-      implementation(libs.compose.uiTooling)
-      implementation(libs.koin.android)
-      implementation(libs.kotlinx.coroutines.android)
-    }
-
-    jsMain.dependencies {
-      implementation(libs.wrappers.browser)
-    }
-
-    iosMain.dependencies {
-    }
-
-    commonTest.dependencies {
-      implementation(kotlin("test"))
-      implementation(libs.kotlinx.coroutines.test)
-    }
-  }
-
   android {
     namespace = "com.v7w7r.kmpNatively.shared"
     compileSdk =
@@ -103,6 +59,49 @@ kotlin {
     iosTarget.binaries.framework {
       baseName = "Shared"
       isStatic = true
+    }
+  }
+
+  sourceSets {
+    commonMain.dependencies {
+      implementation(libs.androidx.lifecycle.runtimeCompose)
+      implementation(libs.androidx.lifecycle.viewmodelCompose)
+      implementation(libs.arrow.core)
+      implementation(libs.arrow.fx.coroutines)
+      implementation(libs.circuit.codegenAnnotations)
+      implementation(libs.circuit.foundation)
+      implementation(libs.circuit.runtime)
+      implementation(libs.circuit.serialization)
+      implementation(libs.compose.components.resources)
+      implementation(libs.compose.foundation)
+      implementation(libs.compose.material3)
+      implementation(libs.compose.runtime)
+      implementation(libs.compose.ui)
+      implementation(libs.compose.uiToolingPreview)
+      implementation(libs.content.negotiation)
+      implementation(libs.kotlinx.coroutines.core)
+      implementation(libs.kotlinx.json)
+      implementation(libs.ktorfit)
+      implementation(libs.material.icons)
+      implementation(libs.serialization.json)
+    }
+
+    androidMain.dependencies {
+      implementation(libs.compose.uiToolingPreview)
+      implementation(libs.compose.uiTooling)
+      implementation(libs.kotlinx.coroutines.android)
+    }
+
+    jsMain.dependencies {
+      implementation(libs.wrappers.browser)
+    }
+
+    iosMain.dependencies {
+    }
+
+    commonTest.dependencies {
+      implementation(kotlin("test"))
+      implementation(libs.kotlinx.coroutines.test)
     }
   }
 }

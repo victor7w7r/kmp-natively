@@ -12,14 +12,22 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import com.composables.icons.materialicons.MaterialIcons
+import com.composables.icons.materialicons.filled.Menu
+import com.slack.circuit.runtime.Navigator
+import com.victor7w7r.kmpNatively.core.resources.theme.AppTheme
+import com.victor7w7r.kmpNatively.core.resources.theme.LocalThemeViewModel
 import kotlinx.coroutines.launch
 
 @Composable
-fun Layout(content: @Composable () -> Unit) {
-  // AppTheme(onThemeChange) {
-
+fun Layout(
+  navigator: Navigator,
+  modifier: Modifier = Modifier,
+  content: @Composable () -> Unit,
+) {
   val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
   val scope = rememberCoroutineScope()
+  val themeViewModel = LocalThemeViewModel.current
 
   Scaffold(
     topBar = {
@@ -28,7 +36,7 @@ fun Layout(content: @Composable () -> Unit) {
         navigationIcon = {
           IconButton(onClick = { scope.launch { drawerState.open() } }) {
             Icon(
-              imageVector = Icons.Default.Menu,
+              imageVector = MaterialIcons.Filled.Menu,
               contentDescription = "Open",
             )
           }
@@ -38,5 +46,4 @@ fun Layout(content: @Composable () -> Unit) {
   ) { innerPadding ->
     Box(modifier = Modifier.padding(innerPadding)) { content() }
   }
-  // }
 }
