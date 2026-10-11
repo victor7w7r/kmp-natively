@@ -6,7 +6,8 @@ import com.slack.circuit.foundation.Circuit
 import com.slack.circuit.foundation.CircuitCompositionLocals
 import com.slack.circuit.foundation.NavigableCircuitContent
 import com.slack.circuit.foundation.rememberCircuitNavigator
-import com.victor7w7r.kmpNatively.core.resources.theme.AppTheme
+import com.victor7w7r.kmpNatively.core.resources.AppTheme
+import com.victor7w7r.kmpNatively.features.common.business.usecases.GetThemeUseCase
 import com.victor7w7r.kmpNatively.features.common.ui.layout.Layout
 import com.victor7w7r.kmpNatively.features.common.ui.pages.home.HomeScreen
 import dev.zacsweers.metro.Inject
@@ -14,21 +15,24 @@ import dev.zacsweers.metro.Inject
 @Inject
 class AppClass(
   private val circuit: Circuit,
+  private val getThemeUseCase: GetThemeUseCase,
 ) {
   @Composable
-  operator fun invoke() = App(circuit)
+  operator fun invoke() = App(circuit, getThemeUseCase())
 }
 
 @Suppress("ktlint:compose:modifier-missing-check")
 @Composable
-fun App(circuit: Circuit) =
-  AppTheme {
-    CircuitCompositionLocals(circuit) {
-      val backStack = rememberSaveableBackStack(root = HomeScreen)
-      val navigator = rememberCircuitNavigator(backStack) {}
+fun App(
+  circuit: Circuit,
+  isDarkMode: Boolean,
+) = CircuitCompositionLocals(circuit) {
+  val backStack = rememberSaveableBackStack(root = HomeScreen)
+  val navigator = rememberCircuitNavigator(backStack) {}
 
-      Layout(navigator = navigator) {
-        NavigableCircuitContent(navigator, backStack)
-      }
+  AppTheme(isDarkMode = isDarkMode) {
+    Layout(navigator = navigator) {
+      NavigableCircuitContent(navigator, backStack)
     }
   }
+}

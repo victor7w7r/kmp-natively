@@ -6,10 +6,13 @@ import arrow.core.some
 import com.victor7w7r.kmpNatively.features.common.business.entities.Binance
 import com.victor7w7r.kmpNatively.features.common.business.repositories.BinanceRepository
 import com.victor7w7r.kmpNatively.features.common.data.datasources.BinanceRemoteDataSource
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesBinding
 import dev.zacsweers.metro.Inject
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
+@ContributesBinding(AppScope::class)
 @Inject
 class BinanceRepositoryImpl(
   private val remoteDataSource: BinanceRemoteDataSource,

@@ -15,8 +15,6 @@ import androidx.compose.ui.Modifier
 import com.composables.icons.materialicons.MaterialIcons
 import com.composables.icons.materialicons.filled.Menu
 import com.slack.circuit.runtime.Navigator
-import com.victor7w7r.kmpNatively.core.resources.theme.AppTheme
-import com.victor7w7r.kmpNatively.core.resources.theme.LocalThemeViewModel
 import kotlinx.coroutines.launch
 
 @Composable
@@ -27,7 +25,6 @@ fun Layout(
 ) {
   val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
   val scope = rememberCoroutineScope()
-  val themeViewModel = LocalThemeViewModel.current
 
   Scaffold(
     topBar = {
