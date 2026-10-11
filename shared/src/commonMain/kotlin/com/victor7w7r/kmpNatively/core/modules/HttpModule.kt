@@ -13,21 +13,19 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
 
 @BindingContainer
-interface HttpModule {
-  companion object {
-    @Provides
-    fun httpClient(): HttpClient = HttpClient { install(ContentNegotiation) { json() } }
+object HttpModule {
+  @Provides
+  fun httpClient(): HttpClient = HttpClient { install(ContentNegotiation) { json() } }
 
-    @Provides
-    @SingleIn(AppScope::class)
-    fun ktorfitClient(client: HttpClient): Ktorfit =
-      Ktorfit
-        .Builder()
-        .baseUrl(Constants.HOST)
-        .httpClient(client)
-        .build()
+  @Provides
+  @SingleIn(AppScope::class)
+  fun ktorfitClient(client: HttpClient): Ktorfit =
+    Ktorfit
+      .Builder()
+      .baseUrl(Constants.HOST)
+      .httpClient(client)
+      .build()
 
-    @Provides
-    fun provideBinanceRemoteDataSource(ktorfit: Ktorfit): BinanceRemoteDataSource = ktorfit.createBinanceRemoteDataSource()
-  }
+  @Provides
+  fun provideBinanceRemoteDataSource(ktorfit: Ktorfit): BinanceRemoteDataSource = ktorfit.createBinanceRemoteDataSource()
 }
