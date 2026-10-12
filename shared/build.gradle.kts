@@ -9,6 +9,7 @@ plugins {
   alias(libs.plugins.kotlinMultiplatform)
   alias(libs.plugins.kotlinSerialization)
   alias(libs.plugins.ksp)
+  alias(libs.plugins.kover)
   alias(libs.plugins.ktorfit)
   alias(libs.plugins.metro)
 }
@@ -40,6 +41,8 @@ kotlin {
       instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
   }
+
+  jvm()
 
   js {
     browser()
@@ -105,6 +108,11 @@ kotlin {
       implementation(kotlin("test"))
       implementation(libs.kotlinx.coroutines.test)
     }
+
+    jvmTest.dependencies {
+      implementation(libs.compose.ui.test)
+      implementation(compose.desktop.currentOs)
+    }
   }
 }
 
@@ -113,6 +121,7 @@ dependencies {
   with(libs.ktorfit.compiler) {
     add("kspCommonMainMetadata", this)
     add("kspAndroid", this)
+    add("kspJvm", this)
     add("kspJs", this)
     add("kspWasmJs", this)
     add("kspIosArm64", this)

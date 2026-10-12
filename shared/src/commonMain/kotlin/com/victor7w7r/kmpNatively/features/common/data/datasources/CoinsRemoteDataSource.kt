@@ -23,14 +23,9 @@ class CoinsResponseConverterFactory : Converter.Factory {
             }
 
             is KtorfitResult.Success -> {
-              val customJson = Json { ignoreUnknownKeys = true }
-
               return result.response
                 .bodyAsText()
-                .let { customJson.decodeFromString<Map<String, JsonElement>>(it) }
-                .let { it["data"]?.jsonObject?.get("coins")?.jsonArray }
-                ?.let { jsonArray -> customJson.decodeFromJsonElement<List<CoinsDto>>(jsonArray) }
-                ?: emptyList<CoinsDto>()
+                .let(::decodeCoinsResponse)
             }
           }
       }
@@ -43,4 +38,14 @@ class CoinsResponseConverterFactory : Converter.Factory {
 interface CoinsRemoteDataSource {
   @GET("coins")
   suspend fun getCurrencies(): List<CoinsDto>
+}
+
+internal fun decodeCoinsResponse(responseBody: String): List<CoinsDto> {
+  val customJson = Json { ignoreUnknownKeys = true }
+
+  return customJson
+    .decodeFromString<Map<String, JsonElement>>(responseBody)
+    .let { it["data"]?.jsonObject?.get("coins")?.jsonArray }
+    ?.let { jsonArray -> customJson.decodeFromJsonElement<List<CoinsDto>>(jsonArray) }
+    ?: emptyList()
 }
