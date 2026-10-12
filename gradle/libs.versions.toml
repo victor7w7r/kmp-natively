@@ -7,11 +7,9 @@ androidx-activity = "1.13.0"
 androidx-lifecycle = "2.11.0"
 arrow = "2.2.3"
 circuit = "0.39.0"
-coil = "3.6.3"
 composeMultiplatform = "1.12.1"
 kotlin = "2.4.20"
 kotlin-wrappers = "2026.10.0"
-kover = "0.9.11"
 kotlinx-coroutines = "1.11.0"
 kotlinx-json = "3.6.0"
 ksp = "2.3.12"
@@ -31,20 +29,16 @@ circuit-codegenAnnotations = { module = "com.slack.circuit:circuit-codegen-annot
 circuit-foundation = { module = "com.slack.circuit:circuit-foundation", version.ref = "circuit" }
 circuit-runtime = { module = "com.slack.circuit:circuit-runtime", version.ref = "circuit" }
 circuit-serialization = { module = "com.slack.circuit:circuit-serialization", version.ref = "circuit" }
-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
-coil-core = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
 compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
 compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "composeMultiplatform" }
 compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "composeMultiplatform" }
-compose-ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "composeMultiplatform" }
 compose-uiTooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "composeMultiplatform" }
 compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
 content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "kotlinx-json" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "kotlinx-json" }
 ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" }
 ktorfit-compiler = { module = "de.jensklingenberg.ktorfit:ktorfit-ksp", version.ref = "ktorfit" }
@@ -59,7 +53,6 @@ composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "k
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
 metro = { id = "dev.zacsweers.metro", version.ref = "metro" }

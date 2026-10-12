@@ -1,9 +1,5 @@
 package com.victor7w7r.kmpNatively.core.modules
 
-import com.victor7w7r.kmpNatively.core.constants.Constants
-import com.victor7w7r.kmpNatively.features.common.data.datasources.CoinsRemoteDataSource
-import com.victor7w7r.kmpNatively.features.common.data.datasources.CoinsResponseConverterFactory
-import com.victor7w7r.kmpNatively.features.common.data.datasources.createCoinsRemoteDataSource
 import de.jensklingenberg.ktorfit.Ktorfit
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.BindingContainer
@@ -26,11 +22,10 @@ object HttpModule {
   fun ktorfitClient(client: HttpClient): Ktorfit =
     Ktorfit
       .Builder()
-      .converterFactories(CoinsResponseConverterFactory())
-      .baseUrl(Constants.HOST)
+      // .baseUrl(Constants.HOST)
       .httpClient(client)
       .build()
 
-  @Provides
-  fun provideCoinsRemoteDataSource(ktorfit: Ktorfit): CoinsRemoteDataSource = ktorfit.createCoinsRemoteDataSource()
+  // @Provides
+  // fun provideCoinsRemoteDataSource(ktorfit: Ktorfit): CoinsRemoteDataSource = ktorfit.createCoinsRemoteDataSource()
 }
