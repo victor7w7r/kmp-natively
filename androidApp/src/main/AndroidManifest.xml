@@ -5,9 +5,10 @@
       <application
         android:icon="@mipmap/ic_launcher"
         android:label="kmp-natively"
-        android:theme="@android:style/Theme.Material.NoActionBar">
+        android:theme="@style/Theme.App">
         <activity
       android:name=".MainActivity"
+            android:theme="@style/Theme.App.Splash"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan"
